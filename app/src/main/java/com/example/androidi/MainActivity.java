@@ -1,6 +1,7 @@
 
 package com.example.androidi;
 
+
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -20,46 +21,46 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        editFirstNumber = findViewById(R.id.editFirstNumber);
-        editSecondNumber = findViewById(R.id.editSecondNumber);
-        plusButton = findViewById(R.id.plusButton);
-        minusButton = findViewById(R.id.minusButton);
-        multiplyButton = findViewById(R.id.multiplyButton);
-        divideButton = findViewById(R.id.divideButton);
-        textSeeResult = findViewById(R.id.textSeeResult);
+        EditText editFirstNumber = findViewById(R.id.editFirstNumber);
+        EditText editSecondNumber = findViewById(R.id.editSecondNumber);
+        Button plusButton = findViewById(R.id.plusButton);
+        Button minusButton = findViewById(R.id.minusButton);
+        Button multiplyButton = findViewById(R.id.multiplyButton);
+        Button divideButton = findViewById(R.id.divideButton);
+        TextView textSeeResult = findViewById(R.id.textSeeResult);
 
         plusButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                calculate('+');
+                calculate('+', editFirstNumber, editSecondNumber, textSeeResult);
             }
         });
 
         minusButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                calculate('-');
+                calculate('-', editFirstNumber, editSecondNumber, textSeeResult);
             }
         });
 
         multiplyButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                calculate('*');
+                calculate('*', editFirstNumber, editSecondNumber, textSeeResult);
             }
         });
 
         divideButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                calculate('/');
+                calculate('/', editFirstNumber, editSecondNumber, textSeeResult);
             }
         });
     }
 
-    private void calculate(char operator) {
-        double firstNumber = Double.parseDouble(editFirstNumber.getText().toString());
-        double secondNumber = Double.parseDouble(editSecondNumber.getText().toString());
+    private void calculate(char operator, EditText firstNumberEditText, EditText secondNumberEditText, TextView resultTextView) {
+        double firstNumber = Double.parseDouble(firstNumberEditText.getText().toString());
+        double secondNumber = Double.parseDouble(secondNumberEditText.getText().toString());
         double result = 0;
 
         switch (operator) {
@@ -76,10 +77,11 @@ public class MainActivity extends AppCompatActivity {
                 if (secondNumber != 0)
                     result = firstNumber / secondNumber;
                 else
-                    textSeeResult.setText("Cannot divide by zero!");
+                    resultTextView.setText("Cannot divide by zero!");
                 break;
         }
 
-        textSeeResult.setText("Result: " + result);
+        resultTextView.setText("Result: " + result);
     }
 }
+
