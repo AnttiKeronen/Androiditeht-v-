@@ -1,20 +1,13 @@
-
 package com.example.androidi;
-
 
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-
 import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity {
-
-    private EditText editFirstNumber, editSecondNumber;
-    private Button plusButton, minusButton, multiplyButton, divideButton;
-    private TextView textSeeResult;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,29 +52,37 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void calculate(char operator, EditText firstNumberEditText, EditText secondNumberEditText, TextView resultTextView) {
-        double firstNumber = Double.parseDouble(firstNumberEditText.getText().toString());
-        double secondNumber = Double.parseDouble(secondNumberEditText.getText().toString());
-        double result = 0;
+        try {
+            double firstNumber = Double.parseDouble(firstNumberEditText.getText().toString());
+            double secondNumber = Double.parseDouble(secondNumberEditText.getText().toString());
+            double result = 0;
 
-        switch (operator) {
-            case '+':
-                result = firstNumber + secondNumber;
-                break;
-            case '-':
-                result = firstNumber - secondNumber;
-                break;
-            case '*':
-                result = firstNumber * secondNumber;
-                break;
-            case '/':
-                if (secondNumber != 0)
-                    result = firstNumber / secondNumber;
-                else
-                    resultTextView.setText("Cannot divide by zero!");
-                break;
+            switch (operator) {
+                case '+':
+                    result = firstNumber + secondNumber;
+                    break;
+                case '-':
+                    result = firstNumber - secondNumber;
+                    break;
+                case '*':
+                    result = firstNumber * secondNumber;
+                    break;
+                case '/':
+                    if (secondNumber != 0)
+                        result = firstNumber / secondNumber;
+                    else
+                        throw new ArithmeticException("Cannot divide by zero!");
+                    break;
+            }
+
+            resultTextView.setText("Result: " + result);
+        } catch (NumberFormatException e) {
+            resultTextView.setText("Invalid input");
+        } catch (ArithmeticException e) {
+            resultTextView.setText(e.getMessage());
         }
-
-        resultTextView.setText("Result: " + result);
     }
 }
+
+
 

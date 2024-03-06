@@ -9,7 +9,7 @@
         android:id="@+id/editFirstNumber"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Syötä ensimmäinen luku"
+
         android:inputType="numberDecimal"
         android:layout_marginBottom="16dp"/>
 
@@ -17,7 +17,7 @@
         android:id="@+id/editSecondNumber"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Syötä toinen luku"
+
         android:inputType="numberDecimal"
         android:layout_below="@id/editFirstNumber"
         android:layout_marginBottom="16dp"/>
