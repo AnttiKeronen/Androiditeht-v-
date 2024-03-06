@@ -3,34 +3,38 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="16dp"
+    android:theme="?android:attr/buttonBarStyle"
     tools:context=".MainActivity">
 
     <EditText
         android:id="@+id/editFirstNumber"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-
         android:inputType="numberDecimal"
+        android:autofillHints="autofill:hint=number"
         android:layout_marginBottom="16dp"/>
 
     <EditText
         android:id="@+id/editSecondNumber"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-
         android:inputType="numberDecimal"
+        android:autofillHints="autofill:hint=number"
         android:layout_below="@id/editFirstNumber"
         android:layout_marginBottom="16dp"/>
+
 
     <LinearLayout
         android:id="@+id/buttonLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:layout_below="@id/editSecondNumber">
+        android:layout_below="@id/editSecondNumber"
+        android:theme="?android:attr/buttonBarStyle">
 
         <Button
             android:id="@+id/plusButton"
+            style="?android:attr/buttonBarButtonStyle"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -38,6 +42,7 @@
 
         <Button
             android:id="@+id/minusButton"
+            style="?android:attr/buttonBarButtonStyle"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -45,6 +50,7 @@
 
         <Button
             android:id="@+id/multiplyButton"
+            style="?android:attr/buttonBarButtonStyle"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -52,6 +58,7 @@
 
         <Button
             android:id="@+id/divideButton"
+            style="?android:attr/buttonBarButtonStyle"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -66,6 +73,7 @@
         android:layout_marginTop="16dp"/>
 
 </RelativeLayout>
+
 
 
 

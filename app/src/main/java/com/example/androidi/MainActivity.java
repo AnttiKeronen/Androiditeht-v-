@@ -1,7 +1,6 @@
 package com.example.androidi;
 
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -22,34 +21,12 @@ public class MainActivity extends AppCompatActivity {
         Button divideButton = findViewById(R.id.divideButton);
         TextView textSeeResult = findViewById(R.id.textSeeResult);
 
-        plusButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                calculate('+', editFirstNumber, editSecondNumber, textSeeResult);
-            }
-        });
-
-        minusButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                calculate('-', editFirstNumber, editSecondNumber, textSeeResult);
-            }
-        });
-
-        multiplyButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                calculate('*', editFirstNumber, editSecondNumber, textSeeResult);
-            }
-        });
-
-        divideButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                calculate('/', editFirstNumber, editSecondNumber, textSeeResult);
-            }
-        });
+        plusButton.setOnClickListener(v -> calculate('+', editFirstNumber, editSecondNumber, textSeeResult));
+        minusButton.setOnClickListener(v -> calculate('-', editFirstNumber, editSecondNumber, textSeeResult));
+        multiplyButton.setOnClickListener(v -> calculate('*', editFirstNumber, editSecondNumber, textSeeResult));
+        divideButton.setOnClickListener(v -> calculate('/', editFirstNumber, editSecondNumber, textSeeResult));
     }
+
 
     private void calculate(char operator, EditText firstNumberEditText, EditText secondNumberEditText, TextView resultTextView) {
         try {
@@ -75,7 +52,8 @@ public class MainActivity extends AppCompatActivity {
                     break;
             }
 
-            resultTextView.setText("Result: " + result);
+
+            resultTextView.setText(String.valueOf(result));
         } catch (NumberFormatException e) {
             resultTextView.setText("Invalid input");
         } catch (ArithmeticException e) {
